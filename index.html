@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chua bai tap EX-04</h1>
+    <div class="ex-1">
+        <h3>EX1: In ngay sinh</h3>
+        <button onclick="renderResultEx1()">In ket qua bai 1</button>
+        <span> ket qua la: </span>
+        <span id="ex-1" style="color: red;"></span>
+    </div>
+    
+    <br><br><br><br>
+
+    <div class="ex-2">
+        <h3>EX2: Kiem tra chan le</h3>
+        <input placeholder="moi ban nhap so" name="input-ex2" id="input-ex2" type="number"/>
+        <br>
+        <button onclick="renderResultEx2()">In ket qua bai 2</button>
+        <span> ket qua la: </span>
+        <span id="ex-2" style="color: red;"></span>
+    </div>
+
+    <br><br><br><br>
+
+    <div class="ex-3">
+        <h3>EX3: Kiem tra so nguyen to</h3>
+        <input placeholder="moi ban nhap so" name="input-ex3" id="input-ex3" type="number"/>
+        <br>
+        <button onclick="renderResultEx3()">In ket qua bai 3</button>
+        <span> ket qua la: </span>
+        <span id="ex-3" style="color: red;"></span>
+    </div>
+
+</body>
+<script>
+
+    //EX3
+    // 1 function kiem tra nguyen to
+    // 1 input de nhap so
+    const inputEx3Ref = document.getElementById('input-ex3');
+    const resultEx3Ref = document.getElementById('ex-3');
+
+    /*
+    *params: 
+        number -> number
+    *output:
+        "true" => neu la so nguyen to
+        "false" => neu khong la so nguyen to
+    */
+    const isPrime = (number) => {
+        if(number < 2)  return false;
+        if(number == 2){
+            return true;
+        }
+        else{
+            for(let i = 2; i <= Math.sqrt(number); i++){
+                if(number % i === 0){
+                    return false;
+                }
+            }
+        };
+        return true;
+    };
+
+    const renderResultEx3 = () => {
+        const valueInputEx3 = inputEx3Ref.value;
+        resultEx3Ref.innerHTML  = isPrime(valueInputEx3) ?  "So Nguyen to" : "Khong phai so nguyen to"; 
+    }
+    // EX2
+    // 1 function kiem tra chan le
+    // 1 input de nhap so
+    const inputEx2Ref = document.getElementById('input-ex2');
+    const resultEx2Ref = document.getElementById('ex-2');
+
+    /*
+    *params: 
+        number -> number
+    *output:
+        "true" => neu la so chan
+        "false" => neu la so le
+    */
+    const parityCheck = (number) => {
+        return number % 2 === 0 ? true : false;
+    }
+
+    function renderResultEx2 (){
+        const valueInputEx2 = inputEx2Ref.value;
+        resultEx2Ref.innerHTML  = parityCheck(valueInputEx2) ?  "So chan" : "So le";
+    }
+
+    // EX1
+    const resultEx1Ref = document.getElementById('ex-1');
+    /*
+    *params: 
+        date -> string
+        month -> string
+        year -> string
+    *output:
+        "18-11-1999"     
+    */
+    function renderDateMonthYear(date, month, year) {
+        return date + "-" + month + "-" + year;
+    }
+
+    function renderResultEx1() {
+        resultEx1Ref.innerHTML = renderDateMonthYear("18", "11", "1999");
+    }
+
+</script>
+
+</html>
